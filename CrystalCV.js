@@ -25,15 +25,54 @@ function loadScripts(file,callback)
     document.head.appendChild(imported);
 }
 
+function loadCSS(file,callback)
+{
+    var imported = document.createElement('link');
+
+    if (imported.readyState){  //IE
+        imported.onreadystatechange = function(){
+            if (imported.readyState == "loaded" ||
+                imported.readyState == "complete"){
+                imported.onreadystatechange = null;
+                callback();
+            }
+        };
+    } else {  //Others
+        imported.onload = function(){
+            callback();
+        };
+    }
+
+    imported.rel = "stylesheet";
+    imported.type = "text/css";
+    imported.href = file;
+    document.head.appendChild(imported);
+}
+
 var person = {};
 
-loadScripts("lib/ejs.js",function(){});
+
 
 loadScripts("lib/document-register-element.js",function(){
-    loadScripts("lib/CrystalCV-Elements.js",function(){});
+    loadScripts("lib/CrystalCV-Elements.js",function(){
+        var template_url_css = 'templates/'+person.template+'/template.css';
+        loadCSS(template_url_css,function(){
+            loadScripts("lib/ejs_production.js",function(){
+                var template_url = 'templates/'+person.template+'/template.ejs';
+                var html = new EJS({url: template_url}).render(person);
+                var cv_content = document.getElementsByTagName("CrystalCV-Body")[0];
+                cv_content.innerHTML = html;
+            });
+        });
+    });
 });
 
-console.log(person);
+
+
+
+
+
+//console.log(person);
 
 
 
