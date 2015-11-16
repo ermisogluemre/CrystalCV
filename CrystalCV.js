@@ -57,7 +57,7 @@ loadScripts("lib/document-register-element.js",function(){
     loadScripts("lib/CrystalCV-Elements.js",function(){
         var template_url_css = 'templates/'+person.template+'/template.css';
         loadCSS(template_url_css,function(){
-            loadScripts("lib/ejs_production.js",function(){
+            loadScripts("lib/ejs.js",function(){
                 var template_url = 'templates/'+person.template+'/template.ejs';
                 var html = new EJS({url: template_url}).render(person);
                 var cv_content = document.getElementsByTagName("CrystalCV-Body")[0];
