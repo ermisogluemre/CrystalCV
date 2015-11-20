@@ -51,7 +51,20 @@ function loadCSS(file,callback)
 
 var person = {};
 
+ person.firstName = "-| First Name |-";
+ person.lastName = "-| Last Name |-";
+ person.email = "-| Email |-";
+ person.title = "-| Title |-";
+ person.phone = "-| Phone |-";
 
+ person.education = [];
+ person.education.available = false;
+ person.experience = [];
+ person.experience.available = false;
+ person.publication = [];
+ person.publication.available = false;
+ person.skill = [];
+ person.skill.available = false;
 
 loadScripts("lib/document-register-element.js",function(){
     loadScripts("lib/CrystalCV-Elements.js",function(){
