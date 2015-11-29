@@ -65,6 +65,12 @@ var person = {};
  person.publication.available = false;
  person.skill = [];
  person.skill.available = false;
+ person.accomplishments = [];
+ person.accomplishments.available = false;
+ person.certificates = [];
+ person.certificates.available = false;
+ person.activities = [];
+ person.activities.available = false;
 
 loadScripts("lib/document-register-element.js",function(){
     loadScripts("lib/CrystalCV-Elements.js",function(){
